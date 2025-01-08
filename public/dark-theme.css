@@ -1,0 +1,57 @@
+/* dark-theme.css */
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333333; /* Color del encabezado */
+  color: #ff6347;
+  padding: 1em;
+  text-align: center;
+}
+
+main {
+  margin: 2em;
+}
+
+h2 {
+  color: #ff6347;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+button {
+  background-color: #333333;
+  color: #ff6347;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555555;
+}
+
+/* Estilos de secciones */
+section#datos-generales,
+section#ingredientes,
+section#preparacion,
+section#video-receta,
+section#recetas-relacionadas {
+  margin-bottom: 2em;
+  padding: 1em;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+}
+
+section#video-receta video {
+  max-width: 100%;
+  height: auto;
+}

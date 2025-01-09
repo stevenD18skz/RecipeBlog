@@ -65,3 +65,36 @@ export const recipes = [
     related_recipes: [1, 2],
   },
 ];
+
+export const tips = [
+  {
+    id: 1,
+    title: "Cómo Cortar Cebolla Sin Llorar",
+    content:
+      "Enfría la cebolla en el refrigerador antes de cortarla. Esto reduce la cantidad de compuestos sulfurados liberados, que son los que te hacen llorar.",
+  },
+  {
+    id: 2,
+    title: "Mantén las Hierbas Frescas",
+    content:
+      "Envuelve las hierbas frescas en una toalla de papel húmeda y guárdalas en una bolsa de plástico en el refrigerador. Esto las mantendrá frescas por más tiempo.",
+  },
+  {
+    id: 3,
+    title: "Cocina la Pasta al Dente",
+    content:
+      "Para una pasta perfectamente cocida, asegúrate de cocinarla hasta que esté al dente, es decir, con un poco de firmeza en el centro.",
+  },
+  {
+    id: 4,
+    title: "Evita que el Aguacate se Oxide",
+    content:
+      "Rocía jugo de limón sobre la superficie cortada del aguacate para evitar que se vuelva marrón rápidamente.",
+  },
+  {
+    id: 5,
+    title: "Usa Sal con Moderación",
+    content:
+      "Añade sal en pequeñas cantidades durante la cocción y ajusta al final para evitar que tus platos queden demasiado salados.",
+  },
+];

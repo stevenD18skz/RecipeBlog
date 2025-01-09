@@ -6,14 +6,95 @@ import RecentRecipes from "../components/home/RecentRecipes.astro";
 import TopRecipes from "../components/home/TopRecipes.astro";
 import Categories from "../components/home/Categories.astro";
 import CookingTips from "../components/home/CookingTips.astro";
+
+import ChefHatIcon from "../icons/ChefHat.astro";
+import TimerIcon from "../icons/Timer.astro";
+import UsersIcon from "../icons/Users.astro";
+import UtensilsIcon from "../icons/Utensils.astro";
+import LinkIcon from "../icons/Link.astro";
+import ListIcon from "../icons/List.astro";
 ---
 
 <Layout>
   <div id="container">
-    <header>
-      <h1>Bienvenido a Mi Portafolio de Recetas</h1>
+    <header class="bg-white shadow-md relative z-10">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div class="flex items-center gap-2">
+            <ChefHatIcon class="w-8 h-8 text-cyan-600" />
+            <span
+              class="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-purple-600 text-transparent bg-clip-text"
+            >
+              Sabores Caseros
+            </span>
+          </div>
+
+          {/* Navigation */}
+          <nav class="hidden md:flex items-center gap-8">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              >Inicio</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              >Recetas</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              >Categorías</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              >Consejos</a
+            >
+          </nav>
+
+          {/* Search and Mobile Menu */}
+          <div class="flex items-center gap-4">
+            <button
+              class="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              Search
+            </button>
+            <button
+              class="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              Menu
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
-    <main>
+
+    {/* Hero Section */}
+    <div
+      class="relative bg-gradient-to-r from-cyan-600 to-purple-600 text-white"
+    >
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="container mx-auto px-4 sm:px-6 py-24 relative">
+        <div class="max-w-3xl">
+          <h1 class="text-5xl font-bold mb-6">
+            Descubre el Arte de Cocinar en Casa
+          </h1>
+          <p class="text-xl mb-8 text-gray-100">
+            Explora nuestra colección de recetas caseras, consejos de cocina y
+            técnicas culinarias para crear platos deliciosos.
+          </p>
+          <button
+            class="bg-white text-cyan-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+          >
+            Explorar Recetas
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main class="flex flex-col gap-3">
       <section id="recetas-del-dia">
         <RecipeOfTheDay />
       </section>
@@ -41,55 +122,5 @@ import CookingTips from "../components/home/CookingTips.astro";
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-  }
-
-  header {
-    background-color: #ff6347; /* Color del encabezado */
-    color: white;
-    padding: 1em;
-    text-align: center;
-  }
-
-  main {
-    margin: 2em;
-  }
-
-  h2 {
-    color: #ff6347;
-  }
-
-  ul,
-  ol {
-    list-style-position: inside;
-  }
-
-  button {
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    padding: 0.5em 1em;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #e5533c;
-  }
-
-  /* Estilos de secciones */
-  section#datos-generales,
-  section#ingredientes,
-  section#preparacion,
-  section#video-receta,
-  section#recetas-relacionadas {
-    margin-bottom: 2em;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #121278;
-  }
-
-  section#video-receta video {
-    max-width: 100%;
-    height: auto;
   }
 </style>

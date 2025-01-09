@@ -1,7 +1,140 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+import ChefHatIcon from "../../icons/ChefHat.astro";
+import TimerIcon from "../../icons/Timer.astro";
+import UsersIcon from "../../icons/Users.astro";
+import UtensilsIcon from "../../icons/Utensils.astro";
+import LinkIcon from "../../icons/Link.astro";
+import ListIcon from "../../icons/List.astro";
+
+import { recipes } from "../../mocks/recipes";
+
+// Obtener la receta por ID
+
 const { id } = Astro.params;
+const ola = id;
+
+// Puedes cambiar esto para probar con diferentes recetas
+const recipe = recipes.find((r) => r.id === parseInt(id));
 ---
 
-<Layout title="Spotify Clone"> ola </Layout>
+<Layout title={`Recipe ${id}`}>
+  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
+    <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+      {/* Hero Section */}
+      <div class="relative h-96 rounded-2xl overflow-hidden mb-8 shadow-xl">
+        <img
+          src={recipe.image}
+          alt={recipe.name}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+        >
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+          <h1 class="text-4xl font-bold text-white mb-4">{recipe.name}</h1>
+        </div>
+      </div>
+
+      {/* Recipe Info Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white rounded-xl p-6 shadow-lg flex items-center gap-4">
+          <ChefHatIcon class="w-8 h-8 text-cyan-600" />
+          <div>
+            <p class="text-sm text-gray-500">Tiempo de preparación</p>
+            <p class="font-semibold">{recipe.preparation_time}</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg flex items-center gap-4">
+          <TimerIcon class="w-8 h-8 text-purple-600" />
+          <div>
+            <p class="text-sm text-gray-500">Tiempo de cocción</p>
+            <p class="font-semibold">{recipe.cooking_time}</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg flex items-center gap-4">
+          <UsersIcon class="w-8 h-8 text-indigo-600" />
+          <div>
+            <p class="text-sm text-gray-500">Porciones</p>
+            <p class="font-semibold">{recipe.servings}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Ingredients */}
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-xl shadow-lg p-6 sticky top-4">
+            <div class="flex items-center gap-2 mb-4">
+              <ListIcon class="w-5 h-5 text-cyan-600" />
+              <h2 class="text-xl font-bold">Ingredientes</h2>
+            </div>
+            <ul class="space-y-3">
+              {
+                recipe.ingredients.map((ingredient, index) => (
+                  <li key={index} class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-600 rounded-full" />
+                    <span>{ingredient}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        {/* Steps and Related Recipes */}
+        <div class="lg:col-span-2 space-y-8">
+          {/* Steps */}
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center gap-2 mb-6">
+              <UtensilsIcon class="w-5 h-5 text-purple-600" />
+              <h2 class="text-xl font-bold">Preparación</h2>
+            </div>
+            <ol class="space-y-6">
+              {
+                recipe.steps.map((step, index) => (
+                  <li key={index} class="flex gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
+                      {index + 1}
+                    </span>
+                    <p class="text-gray-700">{step}</p>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+
+          {/* Related Recipes */}
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <LinkIcon class="w-5 h-5 text-indigo-600" />
+              <h2 class="text-xl font-bold">Recetas Relacionadas</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {
+                recipe.related_recipes.map((relatedId) => {
+                  const relatedRecipe = recipes.find((r) => r.id === relatedId);
+                  if (!relatedRecipe) return null;
+                  return (
+                    <a
+                      key={relatedId}
+                      href={`/receta/${relatedRecipe.id}`}
+                      class="group block bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors"
+                    >
+                      <h3 class="font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                        {relatedRecipe.name}
+                      </h3>
+                    </a>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,70 +1,51 @@
 ---
-const { title, image, description, link } = Astro.props;
+import ChefHatIcon from "../icons/ChefHat.astro";
+import TimerIcon from "../icons/Timer.astro";
+import UsersIcon from "../icons/Users.astro";
+
+const { name, preparation_time, cooking_time, servings, image } = Astro.props;
+
+interface Recipe {
+  id: number;
+  name: string;
+  preparation_time: string;
+  cooking_time: string;
+  servings: number;
+  image: string;
+}
 ---
 
-<div class="recipe-card">
-  <img src={image} alt={title} class="recipe-card__image" />
-  <div class="recipe-card__content">
-    <h2 class="recipe-card__title">{title}</h2>
-    <p class="recipe-card__description">{description}</p>
-    <a href={link} class="recipe-card__link">Read more</a>
+<div
+  class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+>
+  <div class="relative h-48">
+    <img
+      src={image}
+      alt={name}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+    </div>
+  </div>
+
+  <div class="p-5">
+    <h3 class="text-xl font-bold text-gray-800 mb-4">{name}</h3>
+
+    <div class="space-y-2">
+      <div class="flex items-center gap-2 text-sm">
+        <ChefHatIcon class="w-4 h-4 text-cyan-600" />
+        <span class="text-gray-600">Prep: {preparation_time}</span>
+      </div>
+
+      <div class="flex items-center gap-2 text-sm">
+        <TimerIcon class="w-4 h-4 text-purple-600" />
+        <span class="text-gray-600">Cocción: {cooking_time}</span>
+      </div>
+
+      <div class="flex items-center gap-2 text-sm">
+        <UsersIcon class="w-4 h-4 text-indigo-600" />
+        <span class="text-gray-600">{servings} porciones</span>
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-  .recipe-card {
-    border: 5px solid #21af5e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition:
-      box-shadow 0.3s ease,
-      background-color 0.3s ease;
-    background-color: white;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .recipe-card {
-      border: 5px solid #481ca0;
-      background-color: #1a1a1a;
-      color: white;
-    }
-
-    .recipe-card__link {
-      color: #4da8ff;
-    }
-  }
-
-  .recipe-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .recipe-card__image {
-    width: 100%;
-    height: auto;
-  }
-
-  .recipe-card__content {
-    padding: 16px;
-  }
-
-  .recipe-card__title {
-    font-size: 1.5em;
-    margin: 0 0 8px;
-  }
-
-  .recipe-card__description {
-    font-size: 1em;
-    margin: 0 0 16px;
-  }
-
-  .recipe-card__link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .recipe-card__link:hover {
-    text-decoration: underline;
-  }
-</style>

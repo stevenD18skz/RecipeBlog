@@ -1,0 +1,70 @@
+---
+const { title, image, description, link } = Astro.props;
+---
+
+<div class="recipe-card">
+  <img src={image} alt={title} class="recipe-card__image" />
+  <div class="recipe-card__content">
+    <h2 class="recipe-card__title">{title}</h2>
+    <p class="recipe-card__description">{description}</p>
+    <a href={link} class="recipe-card__link">Read more</a>
+  </div>
+</div>
+
+<style>
+  .recipe-card {
+    border: 5px solid #21af5e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition:
+      box-shadow 0.3s ease,
+      background-color 0.3s ease;
+    background-color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .recipe-card {
+      border: 5px solid #481ca0;
+      background-color: #1a1a1a;
+      color: white;
+    }
+
+    .recipe-card__link {
+      color: #4da8ff;
+    }
+  }
+
+  .recipe-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .recipe-card__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .recipe-card__content {
+    padding: 16px;
+  }
+
+  .recipe-card__title {
+    font-size: 1.5em;
+    margin: 0 0 8px;
+  }
+
+  .recipe-card__description {
+    font-size: 1em;
+    margin: 0 0 16px;
+  }
+
+  .recipe-card__link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .recipe-card__link:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,11 +1,95 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import RecipeOfTheDay from "../components/home/RecipeOfTheDay.astro";
+import RecentRecipes from "../components/home/RecentRecipes.astro";
+import TopRecipes from "../components/home/TopRecipes.astro";
+import Categories from "../components/home/Categories.astro";
+import CookingTips from "../components/home/CookingTips.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <div id="container">
+    <header>
+      <h1>Bienvenido a Mi Portafolio de Recetas</h1>
+    </header>
+    <main>
+      <section id="recetas-del-dia">
+        <RecipeOfTheDay />
+      </section>
+      <section id="recetas-mas-recientes">
+        <RecentRecipes />
+      </section>
+      <section id="recetas-populares">
+        <TopRecipes />
+      </section>
+      <section id="categorias">
+        <Categories />
+      </section>
+      <section id="consejos-de-cocina">
+        <CookingTips />
+      </section>
+    </main>
+  </div>
 </Layout>
+
+<style>
+  /* light-theme.css */
+  body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #ff6347; /* Color del encabezado */
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+
+  main {
+    margin: 2em;
+  }
+
+  h2 {
+    color: #ff6347;
+  }
+
+  ul,
+  ol {
+    list-style-position: inside;
+  }
+
+  button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #e5533c;
+  }
+
+  /* Estilos de secciones */
+  section#datos-generales,
+  section#ingredientes,
+  section#preparacion,
+  section#video-receta,
+  section#recetas-relacionadas {
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #121278;
+  }
+
+  section#video-receta video {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

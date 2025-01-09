@@ -15,11 +15,16 @@ boton.addEventListener("click", mostrarMensaje);
 function toggleTheme() {
   const stylesheet = document.getElementById("theme-stylesheet");
   const currentTheme = stylesheet.getAttribute("href");
+  const root = document.getElementById("root");
 
   if (currentTheme === "light-theme.css") {
     stylesheet.setAttribute("href", "dark-theme.css");
+    root.classList.add("dark");
+    console.log("¡Tema cambiado a oscuro!");
   } else {
     stylesheet.setAttribute("href", "light-theme.css");
+    root.classList.remove("dark");
+    console.log("¡Tema cambiado a blanco!");
   }
 }
 
@@ -30,9 +35,13 @@ window.toggleTheme = toggleTheme;
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
   const stylesheet = document.getElementById("theme-stylesheet");
+  const root = document.getElementById("root");
 
   if (savedTheme) {
     stylesheet.setAttribute("href", savedTheme);
+    if (savedTheme === "dark-theme.css") {
+      root.classList.add("dark");
+    }
   }
 
   // Guardar el tema seleccionado en localStorage

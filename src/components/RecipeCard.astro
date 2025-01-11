@@ -3,7 +3,8 @@ import ChefHatIcon from "../icons/ChefHat.astro";
 import TimerIcon from "../icons/Timer.astro";
 import UsersIcon from "../icons/Users.astro";
 
-const { name, preparation_time, cooking_time, servings, image } = Astro.props;
+const { id, name, preparation_time, cooking_time, servings, image, url } =
+  Astro.props;
 
 interface Recipe {
   id: number;
@@ -12,11 +13,13 @@ interface Recipe {
   cooking_time: string;
   servings: number;
   image: string;
+  url: string;
 }
 ---
 
-<div
-  class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+<a
+  href={`/recipe/${id}`}
+  class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105"
 >
   <div class="relative h-48">
     <img
@@ -48,4 +51,4 @@ interface Recipe {
       </div>
     </div>
   </div>
-</div>
+</a>

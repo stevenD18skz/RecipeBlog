@@ -10,6 +10,79 @@ import { recipeOfTheDay } from "../../mocks/recipes";
 
 <div class="carousel min-h-screen">
   <div class="carousel-inner">
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src={recipeOfTheDay.image}
+          alt={recipeOfTheDay.name}
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="h-full flex flex-col justify-center">
+          <a
+            href={`/recipe/${recipeOfTheDay.id}`}
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6 w-fit transform duration-300 hover:scale-110"
+          >
+            <ChefHatIcon class="w-5 h-5 text-cyan-400" />
+            <span class="text-white font-semibold"
+              >Explora la receta del Día</span
+            >
+          </a>
+
+          <h2 class="text-5xl font-bold mb-8 text-white">
+            {recipeOfTheDay.name}
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mb-8">
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <ChefHatIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Preparación</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.preparation_time}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <TimerIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Cocción</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.cooking_time}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <UsersIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Porciones</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.servings} personas
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Slide 1 -->
     <div class="carousel-item active">
       <div class="carousel-content">
@@ -57,82 +130,6 @@ import { recipeOfTheDay } from "../../mocks/recipes";
               Ver Tutoriales
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="absolute inset-0">
-        <img
-          src={recipeOfTheDay.image}
-          alt={recipeOfTheDay.name}
-          class="carousel-image"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"
-        >
-        </div>
-      </div>
-
-      <div
-        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
-      >
-        <div class="h-full flex flex-col justify-center">
-          <div
-            class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6 w-fit"
-          >
-            <ChefHatIcon class="w-5 h-5 text-cyan-400" />
-            <span class="text-white font-medium">Receta del Día</span>
-          </div>
-
-          <h2 class="text-5xl font-bold mb-8 text-white">
-            {recipeOfTheDay.name}
-          </h2>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mb-8">
-            <div
-              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
-            >
-              <ChefHatIcon class="w-6 h-6 text-cyan-400" />
-              <div>
-                <p class="text-sm font-medium text-gray-300">Preparación</p>
-                <p class="font-semibold text-white">
-                  {recipeOfTheDay.preparation_time}
-                </p>
-              </div>
-            </div>
-
-            <div
-              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
-            >
-              <TimerIcon class="w-6 h-6 text-cyan-400" />
-              <div>
-                <p class="text-sm font-medium text-gray-300">Cocción</p>
-                <p class="font-semibold text-white">
-                  {recipeOfTheDay.cooking_time}
-                </p>
-              </div>
-            </div>
-
-            <div
-              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
-            >
-              <UsersIcon class="w-6 h-6 text-cyan-400" />
-              <div>
-                <p class="text-sm font-medium text-gray-300">Porciones</p>
-                <p class="font-semibold text-white">
-                  {recipeOfTheDay.servings} personas
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <button
-            class="w-4/12 px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
-          >
-            Explorar Recetas
-          </button>
         </div>
       </div>
     </div>
@@ -284,5 +281,5 @@ import { recipeOfTheDay } from "../../mocks/recipes";
   setInterval(() => {
     currentIndex = (currentIndex + 1) % indicators.length;
     updateCarousel(currentIndex);
-  }, 15000);
+  }, 15000000);
 </script>

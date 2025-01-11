@@ -1,0 +1,288 @@
+---
+import UtensilsIcon from "../../icons/Utensils.astro";
+import BookIcon from "../../icons/Book.astro";
+import ChefHatIcon from "../../icons/ChefHat.astro";
+import TimerIcon from "../../icons/Timer.astro";
+import UsersIcon from "../../icons/Users.astro";
+
+import { recipeOfTheDay } from "../../mocks/recipes";
+---
+
+<div class="carousel min-h-screen">
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="carousel-content">
+        <img
+          src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=2000"
+          alt="Cooking background"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-cyan-900/90 to-purple-900/90"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-6">
+            <UtensilsIcon class="w-8 h-8 text-cyan-400" />
+            <BookIcon class="w-8 h-8 text-purple-400" />
+          </div>
+          <h1 class="text-6xl font-bold mb-6 text-white leading-tight">
+            Descubre el Arte de<br />
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text"
+            >
+              Cocinar en Casa
+            </span>
+          </h1>
+          <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+            Explora nuestra colección de recetas caseras, consejos de cocina y
+            técnicas culinarias para crear platos extraordinarios que deleitarán
+            a tus seres queridos.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700"
+            >
+              Explorar Recetas
+            </button>
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg border-white bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700"
+            >
+              Ver Tutoriales
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src={recipeOfTheDay.image}
+          alt={recipeOfTheDay.name}
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="h-full flex flex-col justify-center">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6 w-fit"
+          >
+            <ChefHatIcon class="w-5 h-5 text-cyan-400" />
+            <span class="text-white font-medium">Receta del Día</span>
+          </div>
+
+          <h2 class="text-5xl font-bold mb-8 text-white">
+            {recipeOfTheDay.name}
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mb-8">
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <ChefHatIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Preparación</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.preparation_time}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <TimerIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Cocción</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.cooking_time}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl"
+            >
+              <UsersIcon class="w-6 h-6 text-cyan-400" />
+              <div>
+                <p class="text-sm font-medium text-gray-300">Porciones</p>
+                <p class="font-semibold text-white">
+                  {recipeOfTheDay.servings} personas
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="w-4/12 px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
+          >
+            Explorar Recetas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-prev">‹</button>
+  <button class="carousel-next">›</button>
+  <div class="carousel-indicators">
+    <button class="indicator active"></button>
+    <button class="indicator"></button>
+  </div>
+</div>
+
+<style>
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 600px;
+    background-color: aquamarine;
+  }
+
+  .carousel-inner {
+    display: flex;
+    height: 100%;
+    transition: transform 1s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rebeccapurple;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    position: relative;
+  }
+  .carousel-content {
+    position: absolute;
+    inset: 0px;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.6)
+    );
+  }
+
+  .carousel-text {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    color: white;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+    background: rgb(220, 215, 224);
+    border: none;
+    border-radius: 50%;
+    opacity: 0.5;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .indicator.active {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const carouselInner = document.querySelector(
+    ".carousel-inner"
+  ) as HTMLElement;
+  const indicators = document.querySelectorAll(".indicator");
+  let currentIndex = 0;
+
+  function updateCarousel(index: number) {
+    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle("active", i === index);
+    });
+  }
+
+  const prevButton = document.querySelector(".carousel-prev");
+  const nextButton = document.querySelector(".carousel-next");
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      currentIndex =
+        currentIndex > 0 ? currentIndex - 1 : indicators.length - 1;
+      updateCarousel(currentIndex);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % indicators.length;
+      updateCarousel(currentIndex);
+    });
+  }
+
+  indicators.forEach((indicator, i) => {
+    indicator.addEventListener("click", () => {
+      currentIndex = i;
+      updateCarousel(currentIndex);
+    });
+  });
+
+  // Automatically change the carousel slide every 15 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % indicators.length;
+    updateCarousel(currentIndex);
+  }, 15000);
+</script>

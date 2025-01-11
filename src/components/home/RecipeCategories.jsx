@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { RecipeCard } from "../RecipeCard.astro";
+
+import { recipes } from "../../mocks/recipes";
 
 const categories = [
   { id: "all", name: "Todas" },
@@ -31,69 +32,11 @@ const times = [
   { id: "120", name: "< 2 horas" },
 ];
 
-export function RecipeCategories() {
+export default function RecipeCategories() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCuisine, setSelectedCuisine] = useState("all");
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [selectedTime, setSelectedTime] = useState("all");
-
-  const recipes = [
-    {
-      id: 1,
-      name: "Tarta de Manzana",
-      preparation_time: "30 minutos",
-      cooking_time: "45 minutos",
-      servings: 4,
-      category: "dessert",
-      cuisine: "spanish",
-      difficulty: "Intermedio",
-      ingredients: [
-        "2 tazas de harina",
-        "1 taza de azúcar",
-        "1/2 taza de mantequilla",
-        "4 manzanas",
-      ],
-      steps: [
-        "Precalienta el horno a 180°C",
-        "Mezcla la harina y el azúcar",
-        "Añade la mantequilla",
-        "Hornea",
-      ],
-      related_recipes: [2, 3],
-      image:
-        "https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 2,
-      name: "Pasta Carbonara",
-      preparation_time: "15 minutos",
-      cooking_time: "15 minutos",
-      servings: 4,
-      category: "main",
-      cuisine: "italian",
-      difficulty: "Fácil",
-      ingredients: ["Espaguetis", "Huevos", "Queso pecorino", "Panceta"],
-      steps: ["Cocina la pasta", "Prepara la salsa", "Mezcla todo"],
-      related_recipes: [3, 4],
-      image:
-        "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 3,
-      name: "Tacos al Pastor",
-      preparation_time: "40 minutos",
-      cooking_time: "2 horas",
-      servings: 6,
-      category: "main",
-      cuisine: "mexican",
-      difficulty: "Avanzado",
-      ingredients: ["Carne de cerdo", "Chiles", "Piña", "Tortillas"],
-      steps: ["Marina la carne", "Prepara la salsa", "Cocina", "Sirve"],
-      related_recipes: [1, 2],
-      image:
-        "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&q=80&w=800",
-    },
-  ];
 
   const filteredRecipes = recipes.filter((recipe) => {
     const categoryMatch =
@@ -155,7 +98,7 @@ export function RecipeCategories() {
           <div>
             <h4 className="text-sm font-medium text-gray-500 mb-3">
               <div className="flex items-center gap-2">
-                Globe
+                globo
                 <span>Cocina</span>
               </div>
             </h4>
@@ -176,7 +119,7 @@ export function RecipeCategories() {
           <div>
             <h4 className="text-sm font-medium text-gray-500 mb-3">
               <div className="flex items-center gap-2">
-                Clock
+                clock
                 <span>Tiempo de Preparación</span>
               </div>
             </h4>
@@ -224,9 +167,44 @@ export function RecipeCategories() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredRecipes.map((recipe) => (
-            <div />
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div class="relative h-48">
+                <img
+                  src={recipe.image}
+                  alt={recipe.name}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              </div>
+
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                  {recipe.name}
+                </h3>
+
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-600">
+                      Prep: {recipe.preparation_time}
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-600">
+                      Cocción: {recipe.cooking_time}
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-600">
+                      {recipe.servings} porciones
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 

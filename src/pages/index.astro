@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import RecipeOfTheDay from "../components/home/RecipeOfTheDay.astro";
+import Hero from "../components/home/Hero.astro";
+
 import RecentRecipes from "../components/home/RecentRecipes.astro";
 import TopRecipes from "../components/home/TopRecipes.astro";
-import Categories from "../components/home/Categories.astro";
 import CookingTips from "../components/home/CookingTips.astro";
+import RecipeCategories from "../components/home/RecipeCategories";
 
 import ChefHatIcon from "../icons/ChefHat.astro";
 import TimerIcon from "../icons/Timer.astro";
@@ -17,7 +18,7 @@ import ListIcon from "../icons/List.astro";
 
 <Layout>
   <div id="container">
-    <header class="bg-white shadow-md relative z-10">
+    <header id="inicio" class="bg-slate-500/40 shadow-md fixed z-10 w-full">
       <div class="container mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-between h-20">
           {/* Logo */}
@@ -33,23 +34,28 @@ import ListIcon from "../icons/List.astro";
           {/* Navigation */}
           <nav class="hidden md:flex items-center gap-8">
             <a
-              href="#"
-              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              href="#inicio"
+              class="text-gray-900 hover:text-cyan-600 transition-colors"
               >Inicio</a
             >
             <a
-              href="#"
-              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              href="#recetas-mas-recientes"
+              class="text-gray-900 hover:text-cyan-600 transition-colors"
+              >Recientes</a
+            >
+            <a
+              href="#recetas-populares"
+              class="text-gray-900 hover:text-cyan-600 transition-colors"
               >Recetas</a
             >
             <a
-              href="#"
-              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              href="#categorias"
+              class="text-gray-900 hover:text-cyan-600 transition-colors"
               >Categorías</a
             >
             <a
-              href="#"
-              class="text-gray-600 hover:text-cyan-600 transition-colors"
+              href="#consejos-de-cocina"
+              class="text-gray-900 hover:text-cyan-600 transition-colors"
               >Consejos</a
             >
           </nav>
@@ -72,44 +78,29 @@ import ListIcon from "../icons/List.astro";
     </header>
 
     {/* Hero Section */}
-    <div
-      class="relative bg-gradient-to-r from-cyan-600 to-purple-600 text-white"
-    >
-      <div class="absolute inset-0 bg-black/20"></div>
-      <div class="container mx-auto px-4 sm:px-6 py-24 relative">
-        <div class="max-w-3xl">
-          <h1 class="text-5xl font-bold mb-6">
-            Descubre el Arte de Cocinar en Casa
-          </h1>
-          <p class="text-xl mb-8 text-gray-100">
-            Explora nuestra colección de recetas caseras, consejos de cocina y
-            técnicas culinarias para crear platos deliciosos.
-          </p>
-          <button
-            class="bg-white text-cyan-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-          >
-            Explorar Recetas
-          </button>
-        </div>
-      </div>
-    </div>
+    <Hero />
 
-    <main class="flex flex-col gap-3">
-      <section id="recetas-del-dia">
+    <main id="main-content" class="flex flex-col gap-3">
+      {
+        /*<section id="recetas-del-dia">
         <RecipeOfTheDay />
-      </section>
-      <section id="recetas-mas-recientes">
+      </section> */
+      }
+      <section id="recetas-mas-recientes" class="[grid-area:recents]">
         <RecentRecipes />
       </section>
-      <section id="recetas-populares">
-        <TopRecipes />
-      </section>
-      <section id="categorias">
-        <Categories />
-      </section>
-      <section id="consejos-de-cocina">
-        <CookingTips />
-      </section>
+
+      <div class="[grid-area:main]">
+        <section id="recetas-populares">
+          <TopRecipes />
+        </section>
+        <section id="categorias">
+          <RecipeCategories client:load />
+        </section>
+        <section id="consejos-de-cocina">
+          <CookingTips />
+        </section>
+      </div>
     </main>
   </div>
 </Layout>
@@ -122,5 +113,14 @@ import ListIcon from "../icons/List.astro";
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+  }
+
+  #main-content {
+    display: grid;
+    grid-template-areas:
+      "main recents"
+      "main recents";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr auto;
   }
 </style>

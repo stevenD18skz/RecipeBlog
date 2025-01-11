@@ -1,6 +1,6 @@
 ---
 import RecipeCard from "../RecipeCard.astro";
-import { recipes } from "../../mocks/recipes.ts";
+import { popularRecipes } from "../../mocks/recipes.ts";
 ---
 
 <div class="container mx-auto p-6">
@@ -10,6 +10,6 @@ import { recipes } from "../../mocks/recipes.ts";
     Recetas populares
   </h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {recipes.map((recipe) => <RecipeCard {...recipe} />)}
+    {popularRecipes.map((recipe) => <RecipeCard {...recipe} />)}
   </div>
 </div>

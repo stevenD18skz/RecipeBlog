@@ -10,6 +10,57 @@ import { recipeOfTheDay } from "../../mocks/recipes";
 
 <div class="carousel min-h-screen">
   <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="carousel-content">
+        <img
+          src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=2000"
+          alt="Cooking background"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-cyan-900/90 to-purple-900/90"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-6">
+            <UtensilsIcon class="w-8 h-8 text-cyan-400" />
+            <BookIcon class="w-8 h-8 text-purple-400" />
+          </div>
+          <h1 class="text-6xl font-bold mb-6 text-white leading-tight">
+            Descubre el Arte de<br />
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text"
+            >
+              Cocinar en Casa
+            </span>
+          </h1>
+          <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+            Explora nuestra colección de recetas caseras, consejos de cocina y
+            técnicas culinarias para crear platos extraordinarios que deleitarán
+            a tus seres queridos.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700"
+            >
+              Explorar Recetas
+            </button>
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg border-white bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700"
+            >
+              Ver Tutoriales
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Slide 2 -->
     <div class="carousel-item">
       <div class="absolute inset-0">
@@ -83,16 +134,15 @@ import { recipeOfTheDay } from "../../mocks/recipes";
       </div>
     </div>
 
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="carousel-content">
+    <div class="carousel-item">
+      <div class="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=2000"
-          alt="Cooking background"
+          src="https://images.unsplash.com/photo-1505253716362-afaea2d0c35b?auto=format&fit=crop&q=80&w=2000"
+          alt="Healthy recipes"
           class="carousel-image"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-r from-cyan-900/90 to-purple-900/90"
+          class="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-600/60"
         >
         </div>
       </div>
@@ -101,35 +151,247 @@ import { recipeOfTheDay } from "../../mocks/recipes";
         class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
       >
         <div class="max-w-3xl">
-          <div class="flex items-center gap-3 mb-6">
-            <UtensilsIcon class="w-8 h-8 text-cyan-400" />
-            <BookIcon class="w-8 h-8 text-purple-400" />
-          </div>
-          <h1 class="text-6xl font-bold mb-6 text-white leading-tight">
-            Descubre el Arte de<br />
+          <div class="flex items-center gap-3 mb-6"></div>
+          <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+            Descubre Recetas<br />
             <span
-              class="bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text"
+              class="bg-gradient-to-r from-green-400 to-yellow-400 text-transparent bg-clip-text"
             >
-              Cocinar en Casa
+              Saludables y Deliciosas
             </span>
-          </h1>
+          </h2>
           <p class="text-xl mb-8 text-gray-200 leading-relaxed">
-            Explora nuestra colección de recetas caseras, consejos de cocina y
-            técnicas culinarias para crear platos extraordinarios que deleitarán
-            a tus seres queridos.
+            Encuentra una selección de recetas que no solo son deliciosas, sino
+            que también son buenas para ti. Perfectas para mantenerte saludable
+            y lleno de energía.
           </p>
           <div class="flex gap-4">
             <button
-              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700"
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
             >
-              Explorar Recetas
+              Explorar Recetas Saludables
             </button>
             <button
-              class="px-6 py-2 text-gray-50 font-semibold rounded-lg border-white bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700"
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700"
+            >
+              Ver Consejos de Salud
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1604917896402-6c07d83d4052?auto=format&fit=crop&q=80&w=2000"
+          alt="Seasonal ingredients"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-orange-900/80 to-red-600/60"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-6"></div>
+          <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+            Cocina con<br />
+            <span
+              class="bg-gradient-to-r from-orange-400 to-red-400 text-transparent bg-clip-text"
+            >
+              Ingredientes de Temporada
+            </span>
+          </h2>
+          <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+            Descubre recetas inspiradas en los ingredientes frescos y sabrosos
+            de cada estación. Perfectas para aprovechar lo mejor de cada
+            temporada.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
+            >
+              Explorar Recetas de Temporada
+            </button>
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700"
+            >
+              Ver Ingredientes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=2000"
+          alt="Kids cooking"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-600/60"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-6"></div>
+          <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+            Cocinando con<br />
+            <span
+              class="bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text"
+            >
+              los Pequeños Chefs
+            </span>
+          </h2>
+          <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+            Encuentra recetas divertidas y fáciles de hacer con tus niños.
+            Fomenta la creatividad y el amor por la cocina desde temprana edad.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
+            >
+              Explorar Recetas para Niños
+            </button>
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700"
+            >
+              Ver Actividades
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1543353071-087092ec3934?auto=format&fit=crop&q=80&w=2000"
+          alt="Cooking techniques"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-purple-600/60"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-6"></div>
+          <h2 class="text-5xl font-bold mb-6 text-white leading-tight">
+            Domina las<br />
+            <span
+              class="bg-gradient-to-r from-purple-400 to-green-400 text-transparent bg-clip-text"
+            >
+              Técnicas Culinarias
+            </span>
+          </h2>
+          <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+            Aprende nuevas técnicas de cocina para llevar tus habilidades al
+            siguiente nivel. Desde lo básico hasta técnicas avanzadas.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+            >
+              Explorar Técnicas
+            </button>
+            <button
+              class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
             >
               Ver Tutoriales
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1514557268073-e256c443b23b?auto=format&fit=crop&q=80&w=2000"
+          alt="Cooking Planner"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-cyan-900/80 to-cyan-600/80"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl text-left">
+          <h2 class="text-5xl font-bold mb-6 text-white">
+            Planea tus<br />
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-teal-400 text-transparent bg-clip-text"
+            >
+              Comidas Semanales
+            </span>
+          </h2>
+          <p class="text-lg mb-8 text-gray-200">
+            Con nuestras herramientas interactivas, crea menús personalizados y
+            lleva el control de tus recetas favoritas.
+          </p>
+          <button
+            class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700"
+          >
+            Comenzar Ahora
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1514557268073-e256c443b23b?auto=format&fit=crop&q=80&w=2000"
+          alt="Cooking Planner"
+          class="carousel-image"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-cyan-900/80 to-cyan-600/80"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative h-full container mx-auto px-4 sm:px-6 flex items-center"
+      >
+        <div class="max-w-3xl text-left">
+          <h2 class="text-5xl font-bold mb-6 text-white">
+            Planea tus<br />
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-teal-400 text-transparent bg-clip-text"
+            >
+              Comidas Semanales
+            </span>
+          </h2>
+          <p class="text-lg mb-8 text-gray-200">
+            Con nuestras herramientas interactivas, crea menús personalizados y
+            lleva el control de tus recetas favoritas.
+          </p>
+          <button
+            class="px-6 py-2 text-gray-50 font-semibold rounded-lg bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700"
+          >
+            Comenzar Ahora
+          </button>
         </div>
       </div>
     </div>
@@ -139,6 +401,12 @@ import { recipeOfTheDay } from "../../mocks/recipes";
   <button class="carousel-next">›</button>
   <div class="carousel-indicators">
     <button class="indicator active"></button>
+    <button class="indicator"></button>
+    <button class="indicator"></button>
+    <button class="indicator"></button>
+    <button class="indicator"></button>
+    <button class="indicator"></button>
+    <button class="indicator"></button>
     <button class="indicator"></button>
   </div>
 </div>

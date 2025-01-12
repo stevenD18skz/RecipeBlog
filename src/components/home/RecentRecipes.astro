@@ -12,7 +12,7 @@ import { recentRecipes } from "../../mocks/recipes.ts";
     </h2>
 
     <div class="grid grid-cols-1 gap-8">
-      {recentRecipes.map((recipe) => <RecipeCard key={recipe.id} {...recipe} />)}
+      {recentRecipes.map((recipe) => <RecipeCard {...recipe} />)}
     </div>
   </div>
 </div>

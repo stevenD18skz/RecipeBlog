@@ -169,36 +169,36 @@ export default function RecipeCategories() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredRecipes.map((recipe) => (
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div class="relative h-48">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative h-48">
                 <img
                   src={recipe.image}
                   alt={recipe.name}
-                  class="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
 
-              <div class="p-5">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">
+              <div className="p-5">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
                   {recipe.name}
                 </h3>
 
-                <div class="space-y-2">
-                  <div class="flex items-center gap-2 text-sm">
-                    <span class="text-gray-600">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-gray-600">
                       Prep: {recipe.preparation_time}
                     </span>
                   </div>
 
-                  <div class="flex items-center gap-2 text-sm">
-                    <span class="text-gray-600">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-gray-600">
                       Cocción: {recipe.cooking_time}
                     </span>
                   </div>
 
-                  <div class="flex items-center gap-2 text-sm">
-                    <span class="text-gray-600">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-gray-600">
                       {recipe.servings} porciones
                     </span>
                   </div>

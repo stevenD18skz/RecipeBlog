@@ -32,11 +32,34 @@ const times = [
   { id: "120", name: "< 2 horas" },
 ];
 
+const FilterButton = ({ selected, onClick, children }) => (
+  <button
+    className={`px-4 py-2 rounded-full text-sm transition-colors ${
+      selected
+        ? "bg-gray-800 text-white"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+    }`}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
 export default function RecipeCategories() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCuisine, setSelectedCuisine] = useState("all");
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [selectedTime, setSelectedTime] = useState("all");
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const hasActiveFilters =
+    selectedCategory || selectedCuisine || selectedTime || selectedDifficulty;
+
+  const getSelectedName = (options, selectedId) => {
+    if (!selectedId) return null;
+    return options.find((option) => option.id === selectedId)?.name;
+  };
 
   const filteredRecipes = recipes.filter((recipe) => {
     const categoryMatch =
@@ -54,103 +77,132 @@ export default function RecipeCategories() {
     return categoryMatch && cuisineMatch && difficultyMatch && timeMatch;
   });
 
-  const FilterButton = ({ selected, onClick, children }) => (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-        selected
-          ? "bg-gradient-to-r from-cyan-600 to-purple-600 text-white shadow-md"
-          : "bg-white text-gray-600 hover:bg-gray-50"
-      }`}
-    >
-      {children}
-    </button>
-  );
-
   return (
-    <div className="container mx-auto bg-sky-600 px-4 sm:px-6 py-12">
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-        <h3 className="text-2xl font-bold mb-6 text-gray-800">
-          Filtrar Recetas
-        </h3>
-
-        {/* Filter Groups */}
-        <div className="space-y-6">
-          {/* Categories */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-500 mb-3">
-              Categorías
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <FilterButton
-                  key={category.id}
-                  selected={selectedCategory === category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  {category.name}
-                </FilterButton>
-              ))}
-            </div>
-          </div>
-
-          {/* Cuisines */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-500 mb-3">
-              <div className="flex items-center gap-2">
-                globo
-                <span>Cocina</span>
+    <div className="container mx-auto  px-4 sm:px-6 py-12">
+      <div className="bg-white rounded-2xl shadow-lg">
+        <button
+          className="w-full px-6 py-4 flex items-center justify-between text-left"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <div className="flex items-center gap-2">
+            <h3 className="text-2xl font-bold text-gray-800">
+              Filtrar Recetas
+            </h3>
+            {!isExpanded && hasActiveFilters && (
+              <div className="flex flex-wrap gap-2 ml-4">
+                {selectedCategory &&
+                  getSelectedName(categories, selectedCategory) !== "Todas" && (
+                    <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
+                      {getSelectedName(categories, selectedCategory)}
+                    </span>
+                  )}
+                {selectedCuisine &&
+                  getSelectedName(cuisines, selectedCuisine) !== "Todas" && (
+                    <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
+                      {getSelectedName(cuisines, selectedCuisine)}
+                    </span>
+                  )}
+                {selectedTime &&
+                  getSelectedName(times, selectedTime) !== "Todas" && (
+                    <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
+                      {getSelectedName(times, selectedTime)}
+                    </span>
+                  )}
+                {selectedDifficulty &&
+                  getSelectedName(difficulties, selectedDifficulty) !==
+                    "Todas" && (
+                    <span className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
+                      {getSelectedName(difficulties, selectedDifficulty)}
+                    </span>
+                  )}
               </div>
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {cuisines.map((cuisine) => (
-                <FilterButton
-                  key={cuisine.id}
-                  selected={selectedCuisine === cuisine.id}
-                  onClick={() => setSelectedCuisine(cuisine.id)}
-                >
-                  {cuisine.name}
-                </FilterButton>
-              ))}
-            </div>
+            )}
           </div>
+          {isExpanded ? <p>-+</p> : <p>+-</p>}
+        </button>
 
-          {/* Time */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-500 mb-3">
-              <div className="flex items-center gap-2">
-                clock
-                <span>Tiempo de Preparación</span>
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="px-6 pb-6 space-y-6">
+            {/* Categories */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-500 mb-3">
+                Categorías
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <FilterButton
+                    key={category.id}
+                    selected={selectedCategory === category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                  >
+                    {category.name}
+                  </FilterButton>
+                ))}
               </div>
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {times.map((time) => (
-                <FilterButton
-                  key={time.id}
-                  selected={selectedTime === time.id}
-                  onClick={() => setSelectedTime(time.id)}
-                >
-                  {time.name}
-                </FilterButton>
-              ))}
             </div>
-          </div>
 
-          {/* Difficulty */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-500 mb-3">
-              Dificultad
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {difficulties.map((difficulty) => (
-                <FilterButton
-                  key={difficulty.id}
-                  selected={selectedDifficulty === difficulty.id}
-                  onClick={() => setSelectedDifficulty(difficulty.id)}
-                >
-                  {difficulty.name}
-                </FilterButton>
-              ))}
+            {/* Cuisines */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-500 mb-3">
+                <div className="flex items-center gap-2">
+                  GlobeIcon
+                  <span>Cocina</span>
+                </div>
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {cuisines.map((cuisine) => (
+                  <FilterButton
+                    key={cuisine.id}
+                    selected={selectedCuisine === cuisine.id}
+                    onClick={() => setSelectedCuisine(cuisine.id)}
+                  >
+                    {cuisine.name}
+                  </FilterButton>
+                ))}
+              </div>
+            </div>
+
+            {/* Time */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-500 mb-3">
+                <div className="flex items-center gap-2">
+                  ClockIcon
+                  <span>Tiempo de Preparación</span>
+                </div>
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {times.map((time) => (
+                  <FilterButton
+                    key={time.id}
+                    selected={selectedTime === time.id}
+                    onClick={() => setSelectedTime(time.id)}
+                  >
+                    {time.name}
+                  </FilterButton>
+                ))}
+              </div>
+            </div>
+
+            {/* Difficulty */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-500 mb-3">
+                Dificultad
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {difficulties.map((difficulty) => (
+                  <FilterButton
+                    key={difficulty.id}
+                    selected={selectedDifficulty === difficulty.id}
+                    onClick={() => setSelectedDifficulty(difficulty.id)}
+                  >
+                    {difficulty.name}
+                  </FilterButton>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -159,12 +211,9 @@ export default function RecipeCategories() {
       {/* Results */}
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-2xl font-bold text-gray-800">
-            Recetas Encontradas
+          <h3 className="text-2xl font-bold text-gray-800 my-6">
+            Recetas Encontradas {filteredRecipes.length}
           </h3>
-          <span className="text-gray-500">
-            {filteredRecipes.length} recetas
-          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

@@ -18,7 +18,10 @@ import ListIcon from "../icons/List.astro";
 
 <Layout>
   <div id="container">
-    <header id="inicio" class="bg-slate-500/40 shadow-md fixed z-10 w-full">
+    <header
+      id="inicio"
+      class="bg-slate-500/40 shadow-md fixed z-10 w-full transition-colors duration-300"
+    >
       <div class="container mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-between h-20">
           {/* Logo */}
@@ -78,7 +81,7 @@ import ListIcon from "../icons/List.astro";
     </header>
 
     {/* Hero Section */}
-    <Hero />
+    <Hero client:load />
 
     <main id="main-content" class="flex flex-col gap-3">
       {
@@ -124,3 +127,45 @@ import ListIcon from "../icons/List.astro";
     grid-template-rows: 1fr auto;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hero = document.querySelector("#hero");
+
+    if (hero) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            console.log("El componente Hero ya no es visible en pantalla.");
+          } else {
+            console.log("El componente Hero está visible en pantalla.");
+          }
+        },
+        {
+          threshold: 0.1, // Cambia al 10% visible para desencadenar el evento
+        }
+      );
+
+      observer.observe(hero);
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("#inicio");
+      const hero = document.querySelector("#hero");
+
+      if (hero) {
+        const heroHeight = hero.offsetHeight;
+
+        if (window.scrollY > heroHeight) {
+          header.classList.add("bg-white");
+          header.classList.remove("bg-slate-500/40");
+        } else {
+          header.classList.add("bg-slate-500/40");
+          header.classList.remove("bg-white");
+        }
+      }
+    });
+  });
+</script>

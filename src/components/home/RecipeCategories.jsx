@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { recipes } from "../../mocks/recipes";
+import { recipes } from "../../lib/mock";
 
 const categories = [
   { id: "all", name: "Todas" },

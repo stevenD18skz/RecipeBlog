@@ -5,10 +5,14 @@ import ChefHatIcon from "../../icons/ChefHat.astro";
 import TimerIcon from "../../icons/Timer.astro";
 import UsersIcon from "../../icons/Users.astro";
 
-import { recipeOfTheDay } from "../../mocks/recipes";
+import { recipeOfTheDay } from "../../lib/mock";
 ---
 
 <div id="hero" class="carousel min-h-screen">
+  <script type="module">
+    import { setupCarousel } from "../../scripts/carousel.js";
+    setupCarousel();
+  </script>
   <div class="carousel-inner">
     <!-- Slide 1 -->
     <div class="carousel-item active">
@@ -505,49 +509,3 @@ import { recipeOfTheDay } from "../../mocks/recipes";
     opacity: 1;
   }
 </style>
-
-<script>
-  const carouselInner = document.querySelector(
-    ".carousel-inner"
-  ) as HTMLElement;
-  const indicators = document.querySelectorAll(".indicator");
-  let currentIndex = 0;
-
-  function updateCarousel(index: number) {
-    carouselInner.style.transform = `translateX(-${index * 100}%)`;
-    indicators.forEach((indicator, i) => {
-      indicator.classList.toggle("active", i === index);
-    });
-  }
-
-  const prevButton = document.querySelector(".carousel-prev");
-  const nextButton = document.querySelector(".carousel-next");
-
-  if (prevButton) {
-    prevButton.addEventListener("click", () => {
-      currentIndex =
-        currentIndex > 0 ? currentIndex - 1 : indicators.length - 1;
-      updateCarousel(currentIndex);
-    });
-  }
-
-  if (nextButton) {
-    nextButton.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % indicators.length;
-      updateCarousel(currentIndex);
-    });
-  }
-
-  indicators.forEach((indicator, i) => {
-    indicator.addEventListener("click", () => {
-      currentIndex = i;
-      updateCarousel(currentIndex);
-    });
-  });
-
-  // Automatically change the carousel slide every 15 seconds
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % indicators.length;
-    updateCarousel(currentIndex);
-  }, 10000);
-</script>

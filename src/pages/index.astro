@@ -1,19 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import Hero from "../components/home/Hero.astro";
-
 import RecentRecipes from "../components/home/RecentRecipes.astro";
 import TopRecipes from "../components/home/TopRecipes.astro";
 import CookingTips from "../components/home/CookingTips.astro";
 import RecipeCategories from "../components/home/RecipeCategories";
 
 import ChefHatIcon from "../assets/ChefHat.astro";
-import TimerIcon from "../assets/Timer.astro";
-import UsersIcon from "../assets/Users.astro";
-import UtensilsIcon from "../assets/Utensils.astro";
-import LinkIcon from "../assets/Link.astro";
-import ListIcon from "../assets/List.astro";
 ---
 
 <Layout>
@@ -80,9 +73,6 @@ import ListIcon from "../assets/List.astro";
       </div>
     </header>
 
-    {/* Hero Section */}
-    <Hero client:load />
-
     <main id="main-content" class="flex flex-col gap-3">
       {
         /*<section id="recetas-del-dia">
@@ -127,45 +117,3 @@ import ListIcon from "../assets/List.astro";
     grid-template-rows: 1fr auto;
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hero = document.querySelector("#hero");
-
-    if (hero) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) {
-            console.log("El componente Hero ya no es visible en pantalla.");
-          } else {
-            console.log("El componente Hero está visible en pantalla.");
-          }
-        },
-        {
-          threshold: 0.1, // Cambia al 10% visible para desencadenar el evento
-        }
-      );
-
-      observer.observe(hero);
-    }
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    window.addEventListener("scroll", () => {
-      const header = document.querySelector("#inicio");
-      const hero = document.querySelector("#hero");
-
-      if (hero) {
-        const heroHeight = hero.offsetHeight;
-
-        if (window.scrollY > heroHeight) {
-          header.classList.add("bg-white");
-          header.classList.remove("bg-slate-500/40");
-        } else {
-          header.classList.add("bg-slate-500/40");
-          header.classList.remove("bg-white");
-        }
-      }
-    });
-  });
-</script>

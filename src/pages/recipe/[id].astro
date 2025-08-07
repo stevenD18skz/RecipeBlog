@@ -10,6 +10,13 @@ import ListIcon from "../../assets/List.astro";
 
 import { recipes } from "../../lib/mock";
 
+// ✅ Esta función genera las rutas posibles para [id]
+export function getStaticPaths() {
+  return recipes.map((recipe) => ({
+    params: { id: recipe.id.toString() }, // debe ser string
+  }));
+}
+
 const { id } = Astro.params;
 if (!id) {
   throw new Error("Recipe ID is not defined");
@@ -172,13 +179,6 @@ if (!recipe) {
                       </span>
                       <p class="text-gray-700">{step.instruction}</p>
                     </div>
-                    {step.image && (
-                      <img
-                        src={step.image}
-                        alt={`Paso ${step.step}`}
-                        class="rounded-lg w-full h-48 object-cover"
-                      />
-                    )}
                   </li>
                 ))
               }

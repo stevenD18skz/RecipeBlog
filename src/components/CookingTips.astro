@@ -1,7 +1,7 @@
 ---
-import RecipeCard from "../RecipeCard.astro";
+import RecipeCard from "./RecipeCard.astro";
 
-import { recipes, tips } from "../../lib/mock.ts";
+import { recipes, tips } from "../lib/mock.ts";
 ---
 
 <div class="container mx-auto p-6">
@@ -12,7 +12,6 @@ import { recipes, tips } from "../../lib/mock.ts";
     {
       tips.map((tip) => (
         <div
-          key={tip.id}
           class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
         >
           <h3 class="text-xl font-semibold mb-2 text-cyan-600">{tip.title}</h3>

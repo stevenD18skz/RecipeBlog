@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import RecentRecipes from "../components/home/RecentRecipes.astro";
-import TopRecipes from "../components/home/TopRecipes.astro";
-import CookingTips from "../components/home/CookingTips.astro";
-import RecipeCategories from "../components/home/RecipeCategories";
+import RecentRecipes from "../components/RecentRecipes.astro";
+import TopRecipes from "../components/TopRecipes.astro";
+import CookingTips from "../components/CookingTips.astro";
+import RecipeCategories from "../components/RecipeCategories";
 
 import ChefHatIcon from "../assets/ChefHat.astro";
 ---
@@ -13,7 +13,7 @@ import ChefHatIcon from "../assets/ChefHat.astro";
   <div id="container">
     <header
       id="inicio"
-      class="bg-slate-500/40 shadow-md fixed z-10 w-full transition-colors duration-300"
+      class="bg-slate-500/40 shadow-md z-10 w-full transition-colors duration-300"
     >
       <div class="container mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-between h-20">
@@ -73,12 +73,7 @@ import ChefHatIcon from "../assets/ChefHat.astro";
       </div>
     </header>
 
-    <main id="main-content" class="flex flex-col gap-3">
-      {
-        /*<section id="recetas-del-dia">
-        <RecipeOfTheDay />
-      </section> */
-      }
+    <main id="main-content" class="flex flex-col gap-3 pt-20">
       <section id="recetas-mas-recientes" class="[grid-area:recents]">
         <RecentRecipes />
       </section>
